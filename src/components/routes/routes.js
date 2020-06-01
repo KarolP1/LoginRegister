@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import HomeComponent from "./pages/homePage";
 import Timetable from "./pages/timetable";
 
@@ -8,8 +8,8 @@ export class routes extends Component {
     return (
       <Router>
         <Switch>
-          <Route exact path={"/"} component={<div>hell</div>} />
-          <Route path={"/homepage"} component={HomeComponent} />
+          <Route exact path={"/"} component={Timetable} />
+          <Route path={"/homepage"} component={Timetable} />
           <Route path="/timetable" component={Timetable} />
         </Switch>
       </Router>

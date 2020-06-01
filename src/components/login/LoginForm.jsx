@@ -2,14 +2,8 @@ import React, { Component } from "react";
 import { Button } from "@material-ui/core";
 import "./styleLogin.scss";
 import LoadingCircle from "../../assets/images/25.svg";
-import {
-  getInStorage,
-  setInStorage,
-  getFromStorage,
-} from "../../utils/storage";
+import { setInStorage, getFromStorage } from "../../utils/storage";
 import HomeComponent from "../routes/pages/homePage";
-
-import RoutList from "../routes/routes";
 
 export class LoginForm extends Component {
   constructor(props) {
@@ -68,7 +62,7 @@ export class LoginForm extends Component {
     });
   }
   onLogin() {
-    const { signinEmail, signinPassword, signInError } = this.state;
+    const { signinEmail, signinPassword } = this.state;
     const loginData = { signinEmail, signinPassword };
     this.setState({
       isLoading: true,

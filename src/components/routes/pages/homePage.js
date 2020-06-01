@@ -18,7 +18,6 @@ import RoutesList from "../routes";
 import CategoryList from "../routesList";
 
 import "../styles/Main.scss";
-import routesList from "../routesList";
 const drawerWidth = 250;
 
 const useStyles = makeStyles((theme) => ({
@@ -150,7 +149,9 @@ export default function MiniDrawer() {
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <RoutesList />
+        <Router>
+          <RoutesList />
+        </Router>
       </main>
     </div>
   );
