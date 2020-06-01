@@ -11,6 +11,7 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
+import { BrowserRouter as Router } from "react-router-dom";
 
 import RoutesList from "../routes";
 
@@ -149,7 +150,7 @@ export default function MiniDrawer() {
       </Drawer>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <RoutesList></RoutesList>
+        <RoutesList />
       </main>
     </div>
   );
