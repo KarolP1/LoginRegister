@@ -70,7 +70,7 @@ export class LoginForm extends Component {
       password: this.state.signinPassword,
     });
 
-    fetch("http://localhost:8080/api/account/signin", {
+    fetch("http://localhost:4000/users/authenticate", {
       crossDomain: true,
       method: "POST", // or 'PUT'
       headers: {
