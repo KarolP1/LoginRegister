@@ -62,10 +62,14 @@ export class LoginForm extends Component {
         token:
           "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1ZWQ2NGYyOWM0ZTMwMTRhNDAzOGM0Y2EiLCJpYXQiOjE1OTExMDQ1ODl9.ZCqaUy3INkQzPAdYay8k2kqhlzNl5j4SxmqASKT2eXQ",
       });
+      console.log("dupa");
       setInStorage("the_main_app", { token: this.state.token });
     }, 1000);
-    console.log(this.state.token);
-    window.location.reload(false);
+    {
+      setTimeout(() => {
+        window.location.reload(false);
+      }, 1000);
+    }
   }
 
   onTextboxChangeSigninEmail(event) {
@@ -156,7 +160,7 @@ export class LoginForm extends Component {
         </form>
       );
     }
-    return <HomeComponent />;
+    return <p>zalogowano</p>;
   }
 }
 
