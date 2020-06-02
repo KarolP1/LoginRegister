@@ -24,6 +24,7 @@ export class LoginForm extends Component {
     this.onTextboxChangeSigninPassword = this.onTextboxChangeSigninPassword.bind(
       this
     );
+    this.fakeLogIn = this.fakeLogIn.bind(this);
   }
 
   componentDidMount() {
@@ -49,6 +50,22 @@ export class LoginForm extends Component {
     } else {
       this.setState({ isLoading: false });
     }
+  }
+
+  fakeLogIn() {
+    this.setState({
+      isLoading: true,
+    });
+    setTimeout(() => {
+      this.setState({
+        isLoading: false,
+        token:
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1ZWQ2NGYyOWM0ZTMwMTRhNDAzOGM0Y2EiLCJpYXQiOjE1OTExMDQ1ODl9.ZCqaUy3INkQzPAdYay8k2kqhlzNl5j4SxmqASKT2eXQ",
+      });
+      setInStorage("the_main_app", { token: this.state.token });
+    }, 1000);
+    console.log(this.state.token);
+    window.location.reload(false);
   }
 
   onTextboxChangeSigninEmail(event) {
@@ -132,7 +149,7 @@ export class LoginForm extends Component {
             value={signinPassword}
             onChange={this.onTextboxChangeSigninPassword}
           />
-          <Button className="buttonS" onClick={this.onLogin}>
+          <Button className="buttonS" onClick={this.fakeLogIn}>
             Zaloguj
           </Button>
           {signInError ? <p>{signInError}</p> : null}
