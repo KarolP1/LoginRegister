@@ -12,6 +12,8 @@ import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import { BrowserRouter as Router } from "react-router-dom";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import { deleteFromStorage } from "../../../utils/storage";
 
 import RoutesList from "../routes";
 
@@ -19,6 +21,11 @@ import CategoryList from "../routesList";
 
 import "../styles/Main.scss";
 const drawerWidth = 250;
+
+const logout = () => {
+  deleteFromStorage("the_main_app");
+  window.location.reload(false);
+};
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -115,8 +122,12 @@ export default function MiniDrawer() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap>
-            CRM
+          <Typography variant="h6" className="typography">
+            <p>crm</p>
+            <IconButton className="button" onClick={logout}>
+              <ExitToAppIcon className="buttonIcon" />
+              <p>Wyloguj</p>
+            </IconButton>
           </Typography>
         </Toolbar>
       </AppBar>

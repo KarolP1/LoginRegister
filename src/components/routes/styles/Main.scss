@@ -6,3 +6,20 @@
     height: 100%;
   }
 }
+.typography {
+  width: 100%;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center;
+}
+
+.button {
+  background-color: red !important;
+  border-radius: 3px !important;
+  height: 45px;
+  color: black !important;
+  font-size: 20px !important;
+  .buttonIcon {
+    color: black !important;
+  }
+}

@@ -14,6 +14,18 @@ export function getFromStorage(key) {
   }
 }
 
+export function deleteFromStorage(key) {
+  if (!key) {
+    return null;
+  } else {
+    try {
+      localStorage.removeItem(key);
+    } catch (err) {
+      return null;
+    }
+  }
+}
+
 export function setInStorage(key, obj) {
   if (!key) {
     console.error("Error: key is missing");
