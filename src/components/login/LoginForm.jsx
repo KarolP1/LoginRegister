@@ -29,11 +29,12 @@ export class LoginForm extends Component {
 
   componentDidMount() {
     const obj = getFromStorage("the_main_app");
-    if (obj && obj.token !== 0) {
+    if (obj && obj.token === null) {
       const token = obj.token;
 
-      fetch("http://localhost:8080/api/account/verify?token=" + token)
+      fetch("http://145.239.87.60:4000/users/authenticate" + token)
         .then((res) => res.json())
+        .then(console.log("dupa"))
         .then((json) => {
           if (json.succes === true) {
             this.setState({
@@ -91,7 +92,7 @@ export class LoginForm extends Component {
       password: this.state.signinPassword,
     });
 
-    fetch("http://localhost:4000/users/authenticate", {
+    fetch("http://145.239.87.60:4000/users/authenticate", {
       crossDomain: true,
       method: "POST", // or 'PUT'
       headers: {
@@ -103,9 +104,10 @@ export class LoginForm extends Component {
         password: loginData.signinPassword,
       }),
     })
+      .then(console.log("succes"))
       .then((res) => res.json())
       .then((json) => {
-        if (json) {
+        if (json.message !== "Username or password is incorrect") {
           setInStorage("the_main_app", { token: json.token });
           this.setState({
             signInError: json.message,
@@ -114,7 +116,12 @@ export class LoginForm extends Component {
             signinPassword: "",
             token: json.token,
           });
-          window.location.reload(false);
+          window.location.reload();
+        } else {
+          this.setState({
+            isLoading: false,
+            signInError: json.message,
+          });
         }
       });
   }
@@ -153,7 +160,7 @@ export class LoginForm extends Component {
             value={signinPassword}
             onChange={this.onTextboxChangeSigninPassword}
           />
-          <Button className="buttonS" onClick={this.fakeLogIn}>
+          <Button className="buttonS" onClick={this.onLogin}>
             Zaloguj
           </Button>
           {signInError ? <p>{signInError}</p> : null}

@@ -4,7 +4,6 @@ import { Login } from "./components/login/";
 import LoginPane from "./assets/images/507.jpg";
 import { getFromStorage } from "./utils/storage";
 import HomeComponent from "./components/routes/pages/homePage";
-import { Switch } from "react-router-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 
 class App extends Component {
@@ -24,17 +23,15 @@ class App extends Component {
     }
     return (
       <Router>
-        <Switch>
-          <div className="mainContainer">
-            <img src={LoginPane} alt="landscape" />
-            <div className="loginSide">
-              <div className="loginContainer">
-                <Login />
-              </div>
-              <div className="footer"></div>
+        <div className="mainContainer">
+          <img src={LoginPane} alt="landscape" />
+          <div className="loginSide">
+            <div className="loginContainer">
+              <Login />
             </div>
+            <div className="footer"></div>
           </div>
-        </Switch>
+        </div>
       </Router>
     );
   }
